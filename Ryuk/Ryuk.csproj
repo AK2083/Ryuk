@@ -4,6 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Wage Tax Workflows</Title>
+    <Authors>Adrian Helmchen</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/AK2083/Ryuk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>A class library which contains wage tax workflows.</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\Misa\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="C:\Users\adria\source\repos\Ryuk\Ryuk\.editorconfig" />
   </ItemGroup>
 
