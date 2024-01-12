@@ -1,3 +1,6 @@
+using Ryuk;
+using Ryuk.Model.Implementations;
+
 namespace RyukTest
 {
     public class RyukTest_2023_1
@@ -44,7 +47,7 @@ namespace RyukTest
         {
             var lsto = new WageTaxWorkflow2023(new InputParameter
             {
-                KVZ = 1.60,
+                KVZ = 1.60m,
                 PVZ = 1,
                 LZZ = 1,
                 VJAHR = CurrentYear,
@@ -100,7 +103,7 @@ namespace RyukTest
         {
             var lsto = new WageTaxWorkflow2023(new InputParameter
             {
-                KVZ = 1.60,
+                KVZ = 1.60m,
                 PVZ = 0,
                 LZZ = 1,
                 VJAHR = CurrentYear,
@@ -156,7 +159,7 @@ namespace RyukTest
         {
             var lsto = new WageTaxWorkflow2023(new InputParameter
             {
-                KVZ = 1.60,
+                KVZ = 1.60m,
                 PVZ = 1,
                 LZZ = 1,
                 VJAHR = CurrentYear,
@@ -212,9 +215,8 @@ namespace RyukTest
         {
             var lsto = new WageTaxWorkflow2023(new InputParameter
             {
-                KVZ = 1.60,
+                KVZ = 1.60m,
                 PVZ = 1,
-                LZZ = 1,
                 LZZ = 1,
                 VJAHR = CurrentYear,
                 STKL = 4,
@@ -269,9 +271,8 @@ namespace RyukTest
         {
             var lsto = new WageTaxWorkflow2023(new InputParameter
             {
-                KVZ = 1.60,
+                KVZ = 1.60m,
                 PVZ = 1,
-                LZZ = 1,
                 LZZ = 1,
                 VJAHR = CurrentYear,
                 STKL = 5,
@@ -326,9 +327,8 @@ namespace RyukTest
         {
             var lsto = new WageTaxWorkflow2023(new InputParameter
             {
-                KVZ = 1.60,
+                KVZ = 1.60m,
                 PVZ = 1,
-                LZZ = 1,
                 LZZ = 1,
                 VJAHR = CurrentYear,
                 STKL = 6,
