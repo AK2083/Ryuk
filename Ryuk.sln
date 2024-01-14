@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryuk", "Ryuk\Ryuk.csproj", "{37053883-64E6-47BC-A301-D5678046B696}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RyukTest", "RyukTest\RyukTest.csproj", "{E58D0ED3-BC6A-41A4-AEB0-3312AE981AEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryuk", "Ryuk\Ryuk.csproj", "{37053883-64E6-47BC-A301-D5678046B696}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{37053883-64E6-47BC-A301-D5678046B696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37053883-64E6-47BC-A301-D5678046B696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37053883-64E6-47BC-A301-D5678046B696}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E58D0ED3-BC6A-41A4-AEB0-3312AE981AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E58D0ED3-BC6A-41A4-AEB0-3312AE981AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E58D0ED3-BC6A-41A4-AEB0-3312AE981AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E58D0ED3-BC6A-41A4-AEB0-3312AE981AEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
