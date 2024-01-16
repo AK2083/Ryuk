@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryuk", "Ryuk\Ryuk.csproj", "{37053883-64E6-47BC-A301-D5678046B696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RyukTest", "RyukTest\RyukTest.csproj", "{BC2B73AD-2C4B-4416-B3A5-83E5B287E6FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{37053883-64E6-47BC-A301-D5678046B696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37053883-64E6-47BC-A301-D5678046B696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37053883-64E6-47BC-A301-D5678046B696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2B73AD-2C4B-4416-B3A5-83E5B287E6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2B73AD-2C4B-4416-B3A5-83E5B287E6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2B73AD-2C4B-4416-B3A5-83E5B287E6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2B73AD-2C4B-4416-B3A5-83E5B287E6FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
