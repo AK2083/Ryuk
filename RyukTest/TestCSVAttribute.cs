@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using Ryuk.Model.Implementations;
 using RyukTest.Model;
 using System.Globalization;
 using System.Reflection;
@@ -9,11 +10,13 @@ namespace RyukTest
     [AttributeUsage(AttributeTargets.Method)]
     public class TestCSVAttribute : Attribute, ITestDataSource
     {
-        private readonly string _pathToData;
+        private readonly string _filename;
+        private readonly int _currentYear;
 
-        public TestCSVAttribute(string filename)
+        public TestCSVAttribute(string filename, int currentYear)
         {
-            _pathToData = Path.Combine(Directory.GetCurrentDirectory(), "Data", filename);
+            _filename = Path.Combine(Directory.GetCurrentDirectory(), "Data", filename);
+            _currentYear = currentYear;
         }
 
         public IEnumerable<object?[]> GetData(MethodInfo methodInfo)
@@ -27,20 +30,40 @@ namespace RyukTest
                 HeaderValidated = null
             };
 
-            using var reader = new StreamReader(_pathToData);
+            using var reader = new StreamReader(_filename);
             using var csv = new CsvReader(reader, configPersons);
             var records = csv.GetRecords<TestInputData>().ToList();
 
             foreach (var item in records)
             {
-                yield return new object[] { item };
+                yield return new object[] {
+                    new InputParameter
+                    {
+                        KVZ = item.KVZ,
+                        PVZ = item.PVZ,
+                        LZZ = item.LZZ,
+                        VJAHR = _currentYear,
+                        STKL = item.WageTaxClass,
+                        JRE4 = item.Salary * 100,
+                        RE4 = item.Salary * 100,
+                    },
+                    new OutputParameter
+                    {
+                        LSTLZZ = item.Target
+                    }
+                };
             }
         }
 
         public string? GetDisplayName(MethodInfo methodInfo, object?[]? data)
         {
             if (data != null)
-                return string.Format(CultureInfo.CurrentCulture, "Custom - {0} ({1})", methodInfo.Name, string.Join(",", data));
+                return string.Format(
+                    CultureInfo.CurrentCulture,
+                    "WageTax: {0}, Income: {1}",
+                    ((IInputParameter)data[0]).STKL,
+                    ((IInputParameter)data[0]).JRE4 / 100
+                );
 
             return null;
         }
