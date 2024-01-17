@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\WageTax2023bData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\WageTax2023aData.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

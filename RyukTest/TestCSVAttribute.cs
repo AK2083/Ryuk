@@ -61,8 +61,8 @@ namespace RyukTest
                 return string.Format(
                     CultureInfo.CurrentCulture,
                     "WageTax: {0}, Income: {1}",
-                    ((IInputParameter)data[0]).STKL,
-                    ((IInputParameter)data[0]).JRE4 / 100
+                    (data[0] as IInputParameter).STKL,
+                    (data[0] as IInputParameter).JRE4 / 100
                 );
 
             return null;

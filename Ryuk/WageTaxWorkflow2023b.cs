@@ -4,18 +4,14 @@ using Ryuk.Model.Implementations;
 
 namespace Ryuk
 {
-    /// <summary>
-    /// Allgemeine Lohnsteuer ist die Lohnsteuer, die für einen Arbeitnehmer zu erheben ist, der in 
-    /// allen Sozialversicherungszweigen versichert ist.
-    /// </summary>
-    public class WageTaxWorkflow2023 : IWageTaxWorkflow
+    public class WageTaxWorkflow2023b
     {
         public IInternalParameter InternalPara { get; set; }
         public IInputParameter InputPara { get; set; }
         public IOutputParameter OutputPara { get; set; }
         public IOutputDBA OutputDBASE { get; set; }
 
-        public WageTaxWorkflow2023(IInputParameter input)
+        public WageTaxWorkflow2023b(IInputParameter input)
         {
             InputPara = input;
             InternalPara = new InternalParameter();
@@ -59,18 +55,36 @@ namespace Ryuk
             InternalPara.KVSATZAN = InputPara.KVZ / 2 / 100 + 0.07m;
             InternalPara.KVSATZAG = 0.008m + 0.07m;
 
-            if (InputPara.PVS == 1)
+            if (InputPara.LZZ == 1)
             {
-                InternalPara.PVSATZAN = 0.02025m;
-                InternalPara.PVSATZAG = 0.01025m;
+                if (InputPara.PVS == 1)
+                {
+                    InternalPara.PVSATZAN = 0.021125m;
+                    InternalPara.PVSATZAG = 0.011125m;
+                }
+                else
+                {
+                    InternalPara.PVSATZAN = 0.016125m;
+                    InternalPara.PVSATZAG = 0.016125m;
+                }
+
+                InternalPara.PVSATZAN = InputPara.PVZ == 1 ? InternalPara.PVSATZAN + 0.00475m : InternalPara.PVSATZAN;
             }
             else
             {
-                InternalPara.PVSATZAN = 0.01525m;
-                InternalPara.PVSATZAG = 0.01525m;
-            }
+                if (InputPara.PVS == 1)
+                {
+                    InternalPara.PVSATZAN = 0.022m;
+                    InternalPara.PVSATZAG = 0.012m;
+                }
+                else
+                {
+                    InternalPara.PVSATZAN = 0.017m;
+                    InternalPara.PVSATZAG = 0.017m;
+                }
 
-            InternalPara.PVSATZAN = InputPara.PVZ == 1 ? (InternalPara.PVSATZAN + 0.0035m) : InternalPara.PVSATZAN;
+                InternalPara.PVSATZAN = InputPara.PVZ == 1 ? InternalPara.PVSATZAN + 0.006m : InternalPara.PVSATZAN;
+            }
 
             //Grenzwerte für die Steuerklassen V / VI
             InternalPara.W1STKL5 = 12485;
@@ -279,9 +293,7 @@ namespace Ryuk
             if (InputPara.STKL < 6)
             {
                 if (InternalPara.ZVBEZ > 0)
-                    InternalPara.ANP = (InternalPara.ZVBEZ - InternalPara.FVBZ) < 102 ?
-                        Math.Ceiling(InternalPara.ZVBEZ - InternalPara.FVBZ) :
-                        102;
+                    InternalPara.ANP = InternalPara.ZVBEZ - InternalPara.FVBZ < 102 ? Math.Ceiling(InternalPara.ZVBEZ - InternalPara.FVBZ) : 102;
             }
             else
             {
@@ -366,7 +378,7 @@ namespace Ryuk
                     InternalPara.STOVMT = InternalPara.ST;
 
                     // Steuerberechnung mit Einkünften nach§ 34 EStG
-                    InternalPara.ZVE = InternalPara.ZVE + (InputPara.VMT + InputPara.VKAPA) / 500;
+                    InternalPara.ZVE += (InputPara.VMT + InputPara.VKAPA) / 500;
                     UPMLST();
                     InternalPara.ST = (InternalPara.ST - InternalPara.STOVMT) * 5 + InternalPara.STOVMT;
                 }
@@ -518,7 +530,7 @@ namespace Ryuk
             else
                 InternalPara.VSP3 = InternalPara.ZRE4VP * (InternalPara.KVSATZAN + InternalPara.PVSATZAN);
 
-            InternalPara.VSP = Math.Ceiling((decimal)InternalPara.VSP3 + InternalPara.VSP1);
+            InternalPara.VSP = Math.Ceiling(InternalPara.VSP3 + InternalPara.VSP1);
         }
         #endregion
 
