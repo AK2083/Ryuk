@@ -1,3 +1,6 @@
+using Microsoft.Extensions.Logging;
+using Moq;
+
 namespace WageTaxWorkflowTest;
 
 [TestClass]
@@ -8,7 +11,7 @@ public class WageTaxWorkflowTest
     [TestCategory("Workflow2023 Jan-Jun")]
     public void GivenSalaryAndTargetTaxes_WhenCalculateTax2023a_ThenGetTargetTaxesFromWorkflow(IInputParameter Input, IOutputParameter Output)
     {
-        var taxWorkflow = new WageTaxWorkflow2023a(Input);
+        var taxWorkflow = new WageTaxWorkflow2023a(Input, Mock.Of<ILogger<WageTaxWorkflow2023a>>());
         taxWorkflow.Init();
 
         Assert.AreEqual(
@@ -22,7 +25,7 @@ public class WageTaxWorkflowTest
     [TestCategory("Workflow2023 Jul-Dec")]
     public void GivenSalaryAndTargetTaxes_WhenCalculateTax2023b_ThenGetTargetTaxesFromWorkflow(IInputParameter Input, IOutputParameter Output)
     {
-        var taxWorkflow = new WageTaxWorkflow2023b(Input);
+        var taxWorkflow = new WageTaxWorkflow2023b(Input, Mock.Of<ILogger<WageTaxWorkflow2023b>>());
         taxWorkflow.Init();
 
         Assert.AreEqual(
