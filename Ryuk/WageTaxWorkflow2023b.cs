@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Misa;
+﻿using Misa;
 using Ryuk.Helper;
 using Ryuk.Model;
 using Ryuk.Model.Implementations;
@@ -9,20 +8,17 @@ namespace Ryuk
     [WorkflowValidity("01.07.2023")]
     public class WageTaxWorkflow2023b
     {
-        private readonly ILogger<WageTaxWorkflow2023b> _logger;
         public IInternalParameter InternalPara { get; set; }
         public IInputParameter InputPara { get; set; }
         public IOutputParameter OutputPara { get; set; }
         public IOutputDBA OutputDBASE { get; set; }
 
-        public WageTaxWorkflow2023b(IInputParameter input, ILogger<WageTaxWorkflow2023b> log)
+        public WageTaxWorkflow2023b(IInputParameter input)
         {
             InputPara = input;
             InternalPara = new InternalParameter();
             OutputPara = new OutputParameter();
             OutputDBASE = new OutputDBA();
-
-            _logger = log;
         }
 
         /// <summary>
@@ -30,8 +26,6 @@ namespace Ryuk
         /// </summary>
         public void Init()
         {
-            _logger.LogInformation("Initializing with {@InputParameter}", InputPara);
-
             MPARA();
             MRE4JL();
 
@@ -43,9 +37,6 @@ namespace Ryuk
             MBERECH();
             MSONST();
             MVMT();
-
-            _logger.LogInformation("Ending with {@InternalParameter}", InternalPara);
-            _logger.LogInformation("Ending with {@OutputParameter}", OutputPara);
         }
 
         /// <summary>
