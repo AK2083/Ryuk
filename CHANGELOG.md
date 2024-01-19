@@ -1,4 +1,13 @@
-# 0.1.0 (2024-01-17)
+## [0.1.1](https://github.com/AK2083/Ryuk/compare/v0.1.0...v0.1.1) (2024-01-19)
+
+
+### Bug Fixes
+
+* **Ryuk:** remove unnecessary logging ([e3e9555](https://github.com/AK2083/Ryuk/commit/e3e95550cc004fbd07428526bef9f68a00ec10b1))
+
+
+
+# [0.1.0](https://github.com/AK2083/Ryuk/compare/c3b19d4fcf5c82903401925504222608a1bf5d38...v0.1.0) (2024-01-17)
 
 
 ### Bug Fixes
