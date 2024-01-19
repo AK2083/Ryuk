@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/AK2083/Ryuk/compare/v0.1.1...v0.1.2) (2024-01-19)
+
+
+### Bug Fixes
+
+* **Ryuk:** add Readme content ([dc90c09](https://github.com/AK2083/Ryuk/commit/dc90c098424f63d03bdf60234490217aa1503e0d))
+
+
+
 ## [0.1.1](https://github.com/AK2083/Ryuk/compare/v0.1.0...v0.1.1) (2024-01-19)
 
 
